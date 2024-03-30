@@ -17,10 +17,9 @@ const RegisterPage = () => {
   useEffect(() => {
     setPasswordMatch(
       formData.password === formData.confirmPassword ||
-      formData.confirmPassword === ""
+        formData.confirmPassword === ""
     );
-}, [formData.password, formData.confirmPassword, setPasswordMatch]);
-
+  }, [formData.password, formData.confirmPassword, setPasswordMatch]);
 
   const handleFormChange = (e) => {
     const { name, value, files } = e.target;
@@ -42,10 +41,13 @@ const RegisterPage = () => {
         register_form.append(key, formData[key]);
       }
 
-      const response = await fetch("http://localhost:4003/auth/register", {
-        method: "POST",
-        body: register_form,
-      });
+      const response = await fetch(
+        "https://mern-nest-rental-app-backend.onrender.com/auth/register",
+        {
+          method: "POST",
+          body: register_form,
+        }
+      );
 
       if (response.ok) {
         navigate("/login");

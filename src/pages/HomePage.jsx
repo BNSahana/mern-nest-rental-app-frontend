@@ -11,7 +11,7 @@ const HomePage = () => {
       <Navbar />
       <Slide />
       <Categories />
-      <Listings/>
+      <Listings />
       <Footer />
     </div>
   );

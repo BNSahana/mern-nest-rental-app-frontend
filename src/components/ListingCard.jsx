@@ -49,18 +49,20 @@ const ListingCard = ({
 
   const patchWishList = async () => {
     if (user?._id !== creator._id) {
-    const response = await fetch(
-      `http://localhost:4003/users/${user?._id}/${listingId}`,
-      {
-        method: "PATCH",
-        header: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await response.json();
-    dispatch(setWishList(data.wishList));
-  } else { return }
+      const response = await fetch(
+        `https://mern-nest-rental-app-backend.onrender.com/users/${user?._id}/${listingId}`,
+        {
+          method: "PATCH",
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      dispatch(setWishList(data.wishList));
+    } else {
+      return;
+    }
   };
 
   return (
@@ -78,7 +80,10 @@ const ListingCard = ({
           {listingPhotoPaths?.map((photo, index) => (
             <div key={index} className="slide">
               <img
-                src={`http://localhost:4003/${photo?.replace("public", "")}`}
+                src={`https://mern-nest-rental-app-backend.onrender.com/${photo?.replace(
+                  "public",
+                  ""
+                )}`}
                 alt={`photo ${index + 1}`}
               />
               <div

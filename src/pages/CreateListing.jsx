@@ -10,7 +10,7 @@ import { useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 
 const CreateListing = () => {
   const [category, setCategory] = useState("");
@@ -128,10 +128,13 @@ const CreateListing = () => {
       });
 
       /* Send a POST request to server */
-      const response = await fetch("http://localhost:4003/properties/create", {
-        method: "POST",
-        body: listingForm,
-      });
+      const response = await fetch(
+        "https://mern-nest-rental-app-backend.onrender.com/properties/create",
+        {
+          method: "POST",
+          body: listingForm,
+        }
+      );
 
       if (response.ok) {
         navigate("/");

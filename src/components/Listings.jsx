@@ -18,8 +18,8 @@ const Listings = () => {
     try {
       const response = await fetch(
         selectedCategory !== "All"
-          ? `http://localhost:4003/properties?category=${selectedCategory}`
-          : "http://localhost:4003/properties",
+          ? `https://mern-nest-rental-app-backend.onrender.com/properties?category=${selectedCategory}`
+          : "https://mern-nest-rental-app-backend.onrender.com/properties",
         {
           method: "GET",
         }
@@ -42,7 +42,9 @@ const Listings = () => {
       <div className="category-list">
         {categories?.map((category, index) => (
           <div
-            className={`category ${category.label === selectedCategory ? "selected" : ""}`}
+            className={`category ${
+              category.label === selectedCategory ? "selected" : ""
+            }`}
             key={index}
             onClick={() => setSelectedCategory(category.label)}
           >
@@ -67,7 +69,7 @@ const Listings = () => {
               category,
               type,
               price,
-              booking=false
+              booking = false,
             }) => (
               <ListingCard
                 listingId={_id}
